@@ -1,0 +1,86 @@
+/* === Tailwind Directives === */
+
+/* Load Tailwind's base styles (resets, base typography) */
+@tailwind base;
+
+/* Load prebuilt component classes from Tailwind */
+@tailwind components;
+
+/* Load utility classes (spacing, colors, typography, etc.) */
+@tailwind utilities;
+
+
+/* === Global Element Styles === */
+
+/* Reset default body margin and apply a system font stack */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  /* Improve font rendering on WebKit and macOS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Set font-family for <code> elements to use monospaced fonts */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Ensure full-height layout and hide scrollbars */
+html, body, #root {
+  height: 100%;     /* Occupy full viewport height */
+  margin: 0;        /* Remove default margin */
+  padding: 0;       /* Remove default padding */
+  overflow: hidden; /* Prevent scrollbars from showing */
+}
+
+.message-content a {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.message-content u {
+  text-decoration: underline;
+}
+
+.message-content p {
+  display: inline;
+  margin: 0;
+}
+
+.message-content code {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.mention-highlight {
+  background: rgba(253, 224, 71, 0.3); /* yellow-300 at 30% */
+  color: #fef08a; /* yellow-200 text */
+  padding: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  pointer-events: auto; /* 👈 ensure it's clickable */
+}
+
+
+.mention-highlight:hover {
+  background: rgba(253, 224, 71, 0.5); /* slightly more intense */
+}
+
+.mention-clickable {
+  color: #60a5fa; /* Tailwind blue-400 */
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.mention-clickable:hover {
+  text-decoration: underline;
+}
+
