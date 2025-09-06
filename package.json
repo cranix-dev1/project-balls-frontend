@@ -1,11 +1,12 @@
 {
   "name": "project-balls",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Communications app",
   "author": "Cranix",
   "homepage": "./",
   "private": true,
   "main": "main.js",
+
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -14,6 +15,7 @@
     "cross-env": "^7.0.3",
     "dompurify": "^3.2.6",
     "electron-is-dev": "^3.0.1",
+    "electron-log": "^5.4.1",
     "electron-updater": "^6.6.2",
     "emoji-dictionary": "^1.0.12",
     "emoji-mart": "^5.6.0",
@@ -27,6 +29,7 @@
     "web-vitals": "^2.1.4",
     "zustand": "^5.0.5"
   },
+
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.1.2",
@@ -37,20 +40,25 @@
     "tailwindcss": "^3.4.4",
     "wait-on": "^8.0.3"
   },
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "electron:start": "cross-env BROWSER=none concurrently \"yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "electron": "npx electron main.js",
-    "package": "yarn build && electron-builder"
+    "package": "yarn build && electron-builder",
+    "dist": "yarn build && electron-builder --publish always"
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
   },
+
   "browserslist": {
     "production": [
       ">0.2%",
@@ -63,19 +71,20 @@
       "last 1 safari version"
     ]
   },
+
   "build": {
     "appId": "com.projectballs.app",
     "productName": "Project Balls",
     "directories": {
-      "buildResources": "asset"
+      "buildResources": "asset",
+      "output": "dist"
     },
     "files": [
       "build/**/*",
-      "main.js"
+      "main.js",
+      "preload.js",
+      "package.json"
     ],
-    "extraMetadata": {
-      "main": "main.js"
-    },
     "win": {
       "target": "nsis"
     },
@@ -87,8 +96,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "crancorn",
-        "repo": "projectballsupdater"
+        "owner": "cranix-dev1",
+        "repo": "project-balls-frontend"
       }
     ]
   }
